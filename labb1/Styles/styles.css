@@ -28,14 +28,60 @@ ul {
 }
 
 li {
-    margin-right: 30px; /* Adjust spacing */
+    margin-right: 30px; 
 }
 
 a {
     text-decoration: none;
-    color: white; /* Set your desired text color */
+    color: white; 
 }
 
 a:hover {
-    color: darkgrey; /* Set your desired text color on hover */
+    color: darkgrey; 
+}
+
+.home_main{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.home-text{
+    margin-left: 80px;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+.home-text h1 {
+    color: #ffffff;
+    font-size: 60px; 
+    font-weight: bold; 
+}
+.home-text h2 {
+    color: #cccccc;
+    font-size: 40px;
+    font-weight: italic;
+}
+
+
+.home-image{
+    position: relative;
+    margin-left: 250px;
+}
+
+.home-image::before {
+    content: ""; /* Create an empty pseudo-element */
+    position: absolute; /* Set the position to absolute to overlay on top of the image */
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(to left, transparent, #2c3e50); 
+    background-size: 100% 100%;  
+    pointer-events: none; /* Ensure that the pseudo-element doesn't interfere with interactions */
+}
+
+.home-image img{   
+    width: 500px;
+    height: auto;
 }
