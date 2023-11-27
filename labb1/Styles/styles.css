@@ -230,14 +230,18 @@ a:hover {
     width: 50px;
 }
 
-.experince-container {
+.experience-container {
     display: block;
     width: 80%;
-    margin: 150px auto;
+    margin: 5% auto;
 }
 
-.experince-container .box-title {
+
+.experience-container .exp-header {
     margin-bottom: 150px;
+    color: #ddd;
+    text-align: center;
+
 }
 
 .box {
@@ -246,7 +250,102 @@ a:hover {
     border-radius: 10px;
     color: #fff;
     display:block;
+    margin: -80px 0;
+    position: relative;
+    background: #708090;
+
 }
+
+.box:nth-child(even){
+    margin-left: auto;
+
+}
+/*creates the rings and lines for the even/right boxes*/
+
+.box:nth-child(even):before{
+    content:''; /* creates empty content*/
+    position: absolute;
+    left: -15%;
+    top: 50%;
+    transform: translateY(-50%); /*moving the element verticaly*/
+    width: 20px;
+    height: 20px;
+    border: 5px solid #191919;
+    border-radius: 50%;
+}
+
+.box:nth-child(even):after {
+    content: '';
+    position: absolute;
+    left: -8.5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 7%;
+    height: 2px;
+    background: #fff;
+    z-index: -1; /* stacking order (higher= more important*/
+
+}
+
+/*creates the rings and lines for the odd/left boxes*/
+.box:nth-child(odd):before{
+    content: '';
+    position: absolute;
+    right: -14%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 5px solid #191919;
+    border-radius: 50%;
+}
+.box:nth-child(odd):after{
+    content: '';
+    position: absolute;
+    right: -8.5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 7%;
+    height: 2px;
+    background: #fff;
+    z-index: -1;
+
+}
+
+/*coloring the dots*/
+.box:nth-child(2), .box:nth-child(2):before{
+    background: #708090;
+}
+
+.box:nth-child(3), .box:nth-child(3):before{
+    background: #52616B;
+}
+
+.box:nth-child(4), .box:nth-child(4):before{
+    background:  #4E6D70;
+}
+
+.box:nth-child(5), .box:nth-child(5):before{
+    background: #44564F;
+}
+
+.box:nth-child(6), .box:nth-child(6):before{
+    background: #596269;
+}
+
+/*creates a dotted line in the middle of the boxes*/
+.box:nth-child(even) .box-body:before{
+    content: '';
+    position: absolute;
+    left: -12%;
+    top: 0;
+    width: 0px;
+    height: 100%;
+    border: 1px dashed #fff;
+    z-index: -1;
+}
+
+
 
 /*start of CSS for the gallery*/
 
