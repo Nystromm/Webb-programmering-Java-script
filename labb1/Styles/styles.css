@@ -13,7 +13,6 @@ body {
     z-index: 1000;
     background-color: #2c3e50;
 
-    
 }
 
 .portfolio_header {
@@ -446,9 +445,130 @@ a:hover {
 
 }
 
+/*contact css starts here*/ 
 
 .contact-header{
     margin-top: 6%;
     text-align: center;
     color: #ffffff;
+}
+
+.contact{
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    min-height: 100%;
+    padding: 50px 100px;
+    flex-direction: column;
+}
+
+.contact .contact-header{
+    max-width: 800px;
+    text-align: center;
+}
+
+.contact-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.contact-information{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-box{
+    position: relative;
+    padding: 20px 0;
+    display: flex;
+}
+
+.contact-box .ikon{
+    min-width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 50%;
+    font-size: 22px;
+}
+
+.contact-box .text{
+
+    display: flex;
+    margin-left: 20px;
+    font-size: 16px;
+    color: #fff;
+    flex-direction: column;
+    font-weight: 300;
+}
+
+.contact-box .text h2,
+.contact-box .text p {
+    margin: 2px;  /* Add this to remove the default margin */
+}
+
+.form {
+    width: 40%;
+    padding: 40px;
+    background: #2c3e50; 
+}
+
+.form h2{
+    color: #fff;
+    font-size:30px;
+    font-weight: 500;
+}
+
+.input{
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.form .input input,
+.form .input textarea{
+    width: 100%;
+    padding: 5px 0;
+    font-size: 16px;
+    margin: 10px 0;
+    resize: none;
+    border-bottom: 2px  ;
+    border: none;
+    outline: none;
+}
+
+.form .input span{
+position: absolute;
+left: 0;
+font-size: 16px;
+margin: 10px 0;
+pointer-events: none;
+transition: 0.5%;
+}
+
+.form .input input:focus ~ span,
+.form .input input:valid ~ span,
+.form .input textarea:focus ~ span,
+.form .input textarea:valid ~ span{
+    color: #1c6bb9;
+    font-size: 12px;
+    transform: translateY(-20px);
+}
+
+.form .input input[type="submit"]{
+    width: 100px;
+    background: #596269 ;
+    font-size: 18px;
+    color: #fff;
+    padding: 10px;
+    border:none;
+    cursor:pointer;
 }

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 1 Gallery</title>
+    <title>Lab 1 Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="Styles/styles.css" /> 
 </head>
 <body>
@@ -21,13 +22,55 @@
         </div>
     </div>
 
-   <div class="contact-container">
-        <h1 class="contact-header">CONTACT ME</h1>
-
-   </div>
-
-
-    
-
+    <section class="contact">
+            <h1 class="contact-header">CONTACT ME</h1>
+        <div class="contact-container">
+                <div class="contact-information"> 
+                    <div class="contact-box">
+                        <div class="ikon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="text">
+                            <h2>Address</h2>
+                            <p>Storgatan 82, Umeå, Sweden</p>
+                        </div>
+                    </div>
+                
+                    <div class="contact-box">
+                        <div class="ikon"><i class="fas fa-phone"></i></div>
+                        <div class="text">
+                            <h2>Phone</h2>
+                            <p>+46-072 201 35 49</p>
+                        </div>
+                    </div>
+                
+                    <div class="contact-box">
+                        <div class="ikon"><i class="fas fa-envelope"></i></div>
+                        <div class="text">
+                            <h2>Email</h2>
+                            <p>isac.skolanvd@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form"> 
+                    <form>
+                        <h2>Message Me</h2>
+                        <div class="input"> 
+                            <input type="text" name="" required="required">
+                            <span>Name</span>
+                        </div>
+                        <div class="input"> 
+                            <input type="email" name="" required="required">
+                            <span>Email</span>
+                        </div>
+                        <div class="input"> 
+                            <textarea required="required"></textarea>
+                            <span>Write a Message</span>
+                        </div>
+                        <div class="input"> 
+                            <input type="submit" name="" value="send">
+                        </div>
+                    </form>
+                </div>
+        </div>
+    </section>
 </body>
 </html>
