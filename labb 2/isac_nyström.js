@@ -60,3 +60,26 @@ document.getElementById("visit_info").addEventListener('submit', function(event)
 });
 
 
+document.getElementById("submitButton").addEventListener('click', function() {
+    const selectedOption1 = document.querySelector('input[name="question1"]:checked');
+    const selectedOption2 = document.querySelector('input[name="question2"]:checked');
+
+    if (!selectedOption1 || !selectedOption2) {
+        alert("Please select an answer for each question.");
+        return;
+    }
+
+    const correctAnswers = ['option2', 'option1'];
+    let correctCount = 0;
+
+    if (selectedOption1.value === correctAnswers[0]) {
+        correctCount++;
+    }
+
+    if (selectedOption2.value === correctAnswers[1]) {
+        correctCount++;
+    }
+
+    document.getElementById("results").textContent = `You got ${correctCount} correct answer(s).`;
+});
+
