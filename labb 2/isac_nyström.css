@@ -1,0 +1,35 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+}
+
+.main_header {
+    margin-top: 4%;
+    border: 1px solid black;    
+    text-align: center;
+    position: sticky;
+    width: 100%;
+}
+
+.input_container {
+    width: 100%;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+
+#visit_info {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#visit_info label,
+#visit_info input {
+    margin: 5px 0;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Quiz</title>
+    <link rel="stylesheet" href="isac_nyström.css">
+</head>
+<body>
+    <div class="main_header">
+        <h1> Welcome to Master Quiz</h1>
+    </div>
+
+    <div class="input_container" id="inputContainer">
+        <form id="visit_info">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required pattern="^[A-Za-zåäöÅÄÖ]+$" title="Only letters allowed" autocomplete="given-name">
+                
+                <div id="firstNameError" class="error-message"></div>
+                
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required pattern="^[A-Za-zåäöÅÄÖ]+$" title="Only letters allowed"  autocomplete="family-name">
+                
+                <div id="lastNameError" class="error-message"></div>
+                
+                <label for="email">Email:     </label>
+                <input type="email" id="email" name="email" required  autocomplete="email">
+                
+                <div id="emailError" class="error-message"></div>
+            <input type="submit" value="Submit"  id="submitButton">
+        </form>
+    </div>
+
+
+    <div class="quiz_container" id="quizContainer" style="display: none;">
+        <h2>Quiz Section</h2>
+        <div id="questions">
+
+        </div>
+        <div id="answers"> 
+        </div>
+        <div id="results"></div>
+    </div>
+
+<script src="isac_nyström.js"></script>
+</body>
+</html>
+
