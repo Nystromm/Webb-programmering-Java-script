@@ -35,11 +35,24 @@ body {
 }
 
 /*start of quiz styling*/
+.quiz_container h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+#questionsContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 #question1 {
     width: 450px;
     padding: 20px;
-    margin-top: 80px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 20px; 
@@ -62,4 +75,28 @@ body {
     align-items: center;
     justify-content: center;
     
+}
+
+#results {
+    text-align: center;
+    margin-top: 20px; 
+}
+
+#submitQuizButton {
+    width: 150px; /* Set the width as needed */
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #007BFF; /* Adjust the background color */
+    color: #fff; /* Adjust the text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#submitQuizButton:hover {
+    background-color: #0056b3; /* Adjust the hover background color */
 }
