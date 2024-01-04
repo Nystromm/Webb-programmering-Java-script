@@ -85,3 +85,25 @@ function checkAnswers() {
 document.getElementById("submitQuizButton").addEventListener('click', function () {
     checkAnswers();
 });
+
+// Checkbox function
+function createCheckbox(formId, id, label) {
+    const form = document.getElementById(formId);
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = id;
+    checkbox.name = id;
+
+    const checkboxLabel = document.createElement("label");
+    checkboxLabel.htmlFor = id;
+    checkboxLabel.appendChild(document.createTextNode(label));
+    
+    form.appendChild(checkbox);
+    form.appendChild(checkboxLabel);
+} 
+
+
+createCheckbox("question4form", "alt1", "alt1");
+createCheckbox("question4form", "alt2", "alt2");
+createCheckbox("question4form", "alt3", "alt3");
+createCheckbox("question4form", "alt4", "alt4");

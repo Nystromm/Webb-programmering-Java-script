@@ -35,7 +35,6 @@ body {
 }
 
 /*start of quiz styling*/
-
 .quiz_container h2 {
     display: flex;
     flex-direction: column;
@@ -53,7 +52,8 @@ body {
     text-align: center; /* Add text-align: center */
 }
 
-#question1, #question2 {
+#question1,
+ #question2, #question3, #question4 {
     border: 1px solid black;    
     width: 450px;
     padding: 20px;
@@ -61,16 +61,23 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 20px; 
     margin: 20px 0; /* Add margin for separation */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Add text-align: center */
     
 }
 
 #results {
-    border: 1px solid black;    
-
     text-align: center;
     margin-top: 20px; 
 }
 
+#button_cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 #submitQuizButton {
 
     width: 150px;
@@ -84,6 +91,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+   
 }
 
 
