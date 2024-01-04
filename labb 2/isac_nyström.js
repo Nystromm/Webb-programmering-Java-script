@@ -102,8 +102,12 @@ function createCheckbox(formId, id, label) {
     form.appendChild(checkboxLabel);
 } 
 
+createCheckbox("question3Form", "alt1", "alt1");
+createCheckbox("question3Form", "alt2", "alt2");
+createCheckbox("question3Form", "alt3", "alt3");
+createCheckbox("question3Form", "alt4", "alt4");
 
-createCheckbox("question4form", "alt1", "alt1");
-createCheckbox("question4form", "alt2", "alt2");
-createCheckbox("question4form", "alt3", "alt3");
-createCheckbox("question4form", "alt4", "alt4");
+createCheckbox("question4Form", "alt1", "alt1");
+createCheckbox("question4Form", "alt2", "alt2");
+createCheckbox("question4Form", "alt3", "alt3");
+createCheckbox("question4Form", "alt4", "alt4");
