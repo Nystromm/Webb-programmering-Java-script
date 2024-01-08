@@ -130,7 +130,7 @@ function checkAnswers() {
         correctCount++;
     }
 
-    document.getElementById("results").textContent = `You got ${correctCount} correct answer(s) out of 6.`;
+    document.getElementById("results").innerHTML = ` Quiz submitted succesfully! <br> <br>Score: ${correctCount}/6 <br> <br> You got ${correctCount} correct answers out of 6 possible.`;
 
     
 }

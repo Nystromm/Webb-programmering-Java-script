@@ -51,8 +51,12 @@ body {
 }
 #question1 h4,
 #question2 h6, 
-#question2 h4 {
+#question2 h4,
+#question4 h6 {
     margin-top: 0;
+}
+#question4 h6 {
+    margin-bottom: 0;
 }
 
 #question1,
