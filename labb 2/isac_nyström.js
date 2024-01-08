@@ -1,11 +1,10 @@
-class person{
-    constructor(fname,lname,email){
+class person {
+    constructor(fname, lname, email) {
         this.fname = fname;
         this.lname = lname;
         this.email = email;
     }
 }
-
 
 function displayErrorMessage(inputElement, errorElementId, errorMessage) {
     const errorElement = document.getElementById(errorElementId);
@@ -19,7 +18,7 @@ function clearErrorMessage(inputElement, errorElementId) {
     inputElement.classList.remove('error'); // Remove class from the input element
 }
 
-document.getElementById("visit_info").addEventListener('submit', function(event) {
+document.getElementById("visit_info").addEventListener('submit', function (event) {
     event.preventDefault();
     //id of the inputs
     const firstNameInput = document.getElementById("firstName");
@@ -36,9 +35,10 @@ document.getElementById("visit_info").addEventListener('submit', function(event)
         displayErrorMessage(firstNameInput, "firstNameError", "First name should contain only letters");
         return;
     }
+
     // last name qualificaton and error message
-    if (!namePattern.test(lastName)){
-        displayErrorMessage(lastNameInput,"lastNameError", "Last name should contain only letters")
+    if (!namePattern.test(lastName)) {
+        displayErrorMessage(lastNameInput, "lastNameError", "Last name should contain only letters")
         return;
     }
     // email qualification adn error message
@@ -51,7 +51,6 @@ document.getElementById("visit_info").addEventListener('submit', function(event)
     const Person = new person(firstName, lastName, email);
     console.log(Person);
 
-
     // Hide the input container
     document.getElementById("inputContainer").style.display = "none";
 
@@ -60,54 +59,167 @@ document.getElementById("visit_info").addEventListener('submit', function(event)
 });
 
 
-
 function checkAnswers() {
-    const selectedOption1 = document.querySelector('input[name="question1"]:checked');
-    const selectedOption2 = document.querySelector('input[name="question2"]:checked');
+    const answerQuestion1 = document.querySelector('input[name="question1"]:checked');
+    const answerQuestion2 = document.querySelector('input[name="question2"]:checked');
+    const answerQuestion3 = document.querySelectorAll('input[name="question3"]:checked');
+    const answerQuestion4 = document.querySelectorAll('input[name="question4"]:checked');
+    const answerQuestion5 = document.querySelector('input[name="textbox1"]').value.trim().toLowerCase();
+    const answerQuestion6 = document.querySelector('input[name="textbox2"]').value.trim().toLowerCase();
 
-    if (selectedOption1 && selectedOption2) {
-        const correctAnswers = ['option2', 'option1'];
-        let correctCount = 0;
-
-        if (selectedOption1.value === correctAnswers[0]) {
-            correctCount++;
-        }
-
-        if (selectedOption2.value === correctAnswers[1]) {
-            correctCount++;
-        }
-
-        document.getElementById("results").textContent = `You got ${correctCount} correct answer(s).`;
+    if (!answerQuestion2) {
+        alert("Please answer question 2");
+        return;
     }
+
+    if (answerQuestion4.length === 0) {
+        alert("Please answer question 4");
+        return;
+    }
+
+
+    // Define correct answers
+    const correctAnswers = {
+        question1: 'option2',
+        question2: 'option2',
+        question3: ['Russia', 'Turkey'],
+        question4: ['Mendelevium'],
+        question5: ['athena'],
+        question6: ['greenland']
+    };
+
+    // Check correctness
+    let correctCount = 0;
+
+    if (answerQuestion1 && answerQuestion1.value === correctAnswers.question1) {
+        correctCount++;
+    }
+
+    if (answerQuestion2 && answerQuestion2.value === correctAnswers.question2) {
+        correctCount++;
+    }
+
+    const selectedAnswersQuestion3 = Array.from(answerQuestion3).map(checkbox => checkbox.value);
+    const correctAnswersQuestion3 = correctAnswers.question3;
+
+    const scoreQuestion3 = correctAnswersQuestion3.reduce((score, answer) => {
+        if (selectedAnswersQuestion3.includes(answer)) {
+            return score + 0.5; // Half point for each correct answer
+        }
+        return score;
+    }, 0);
+    correctCount += scoreQuestion3
+
+    const selectedAnswersQuestion4 = Array.from(answerQuestion4).map(checkbox => checkbox.value);
+    const correctAnswersQuestion4 = correctAnswers.question4;
+
+    const scoreQuestion4 = correctAnswersQuestion4.reduce((score, answer) => {
+        if (selectedAnswersQuestion4.includes(answer)) {
+            return score + 1; // Half point for each correct answer
+        }
+        return score;
+    }, 0);
+
+    correctCount += scoreQuestion4;
+
+    if (arraysEqual([answerQuestion5], correctAnswers.question5)) {
+        correctCount++;
+    }
+
+    if (arraysEqual([answerQuestion6], correctAnswers.question6)) {
+        correctCount++;
+    }
+
+    document.getElementById("results").textContent = `You got ${correctCount} correct answer(s) out of 6.`;
+
+    
 }
 
-// Add the submit button event listener
+
+function arraysEqual(arr1, arr2) {
+    return arr1.length === arr2.length && arr1.every((value, index) => value === arr2[index]);
+}
+
+function isQuestion4Answered() {
+    const answerQuestion4 = document.querySelectorAll('input[name="question4"]:checked');
+    return answerQuestion4.length > 0;
+}
+
+// submit button
 document.getElementById("submitQuizButton").addEventListener('click', function () {
     checkAnswers();
 });
 
 // Checkbox function
-function createCheckbox(formId, id, label) {
+function createCheckbox(formId, name, id, label) {
     const form = document.getElementById(formId);
+
+    //container for the checkbox and label
+    const checkboxContainer = document.createElement("div");
+    checkboxContainer.style.display = "flex";
+    checkboxContainer.style.alignItems = "center";
+
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.id = id;
-    checkbox.name = id;
+    checkbox.name = name;
+    checkbox.value = label;
 
     const checkboxLabel = document.createElement("label");
     checkboxLabel.htmlFor = id;
     checkboxLabel.appendChild(document.createTextNode(label));
+
+    // Append the checkbox and label to the container
+    checkboxContainer.appendChild(checkbox);
+    checkboxContainer.appendChild(checkboxLabel);
+
+    // Append the container to the form
+    form.appendChild(checkboxContainer);
+}
+
+createCheckbox("question3Form","question3", "Russia", "Russia");
+createCheckbox("question3Form","question3", "Turkey", "Turkey");
+createCheckbox("question3Form","question3", "Japan", "Japan");
+createCheckbox("question3Form","question3","India", "India");
+
+createCheckbox("question4Form","question4", "Mendelevium", "Mendelevium");
+createCheckbox("question4Form","question4", "Moscovium", "Moscovium");
+createCheckbox("question4Form","question4", "Meitnerium", "Meitnerium");
+createCheckbox("question4Form","question4", "Mercury", "Mercury");
+
+function createTextbox(formId, id, label) {
+    const form = document.getElementById(formId);
     
-    form.appendChild(checkbox);
-    form.appendChild(checkboxLabel);
-} 
+    const textboxLabel = document.createElement("label");
+    textboxLabel.htmlFor = id;
+    textboxLabel.textContent = label;
 
-createCheckbox("question3Form", "alt1", "alt1");
-createCheckbox("question3Form", "alt2", "alt2");
-createCheckbox("question3Form", "alt3", "alt3");
-createCheckbox("question3Form", "alt4", "alt4");
+    const textbox = document.createElement("input");
+    textbox.type = "text";
+    textbox.name = id;
+    textbox.classList.add("textbox-size"); 
+    
+    form.appendChild(textboxLabel);
+    form.appendChild(textbox); 
 
-createCheckbox("question4Form", "alt1", "alt1");
-createCheckbox("question4Form", "alt2", "alt2");
-createCheckbox("question4Form", "alt3", "alt3");
-createCheckbox("question4Form", "alt4", "alt4");
+    textbox.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+        }
+    });
+
+}
+
+
+createTextbox("question5Form", "textbox1", "Enter your answer:");
+createTextbox("question6Form", "textbox2", "Enter your answer:");
+
+
+
+document.getElementById("correctResultsButton").addEventListener('click', function (event) {
+    event.preventDefault();
+    document.getElementById("answers").innerHTML = `Correct answers: <br><br>Question 1: 39 inches <br>Question 2: Venus
+    <br>Question 3: Russia & Turkey <br>Question 4: Mendelevium <br>Question 5: Athena <br>Question 6: Greenland `;
+
+});
+

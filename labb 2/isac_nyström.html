@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,9 +13,10 @@
 
     <div class="input_container" id="inputContainer">
         <form id="visit_info">
+                <div id="statusMessage"></div>
                 <label for="firstName">First Name:</label>
                 <input type="text" id="firstName" name="firstName" required pattern="^[A-Za-zåäöÅÄÖ]+$" title="Only letters allowed" autocomplete="given-name">
-                
+
                 <div id="firstNameError" class="error-message"></div>
                 
                 <label for="lastName">Last Name:</label>
@@ -37,36 +38,57 @@
         <div id="questionsContainer">
             <div id="question1">
                 <h3>Question 1</h3>
-                <label><input type="radio" name="question1" value="option1">Option 1</label>
-                <label><input type="radio" name="question1" value="option2">Option 2</label>
-                <label><input type="radio" name="question1" value="option3">Option 3</label>
+                <h4>How many inches is 1 metre?</h4>
+                <label><input type="radio" name="question1" value="option1">18 inches</label>
+                <label><input type="radio" name="question1" value="option2">39 inches</label>
+                <label><input type="radio" name="question1" value="option3">43 inches</label>
             </div>
 
             <div id="question2">
-                <h3>Question 2</h3>
-                <label><input type="radio" name="question2" value="option1">Option 1</label>
-                <label><input type="radio" name="question2" value="option2">Option 2</label>
-                <label><input type="radio" name="question2" value="option3">Option 3</label>
+                <h3>Question 2*</h3>
+                <h6>(required)</h6>
+                <h4>What is the only planet in our solar system that rotates clockwise?</h4>
+                <label><input type="radio" name="question2" value="option1">Earth</label>
+                <label><input type="radio" name="question2" value="option2">Venus</label>
+                <label><input type="radio" name="question2" value="option3">Mars</label>
             </div>
 
             <div id="question3">
                 <h3>Question 3</h3>
+                <h4>Which countries are located in both Asia and Europe?</h4>
                 <form id="question3Form"></form>
+                <h7 id="note">(Note that more than one answer may be correct)</h7>
+
             </div>
 
             <div id="question4">
                 <h3>Question 4</h3>
+                <h4>Which element on the periodic table is named after a famous scientist and has the chemical symbol "Md"?</h4>
                 <form id="question4Form"></form>
             </div>
 
+            <div id="question5"> 
+                <h3>Question 5</h3>
+                <h4>In Greek mythology, who is the goddess of wisdom and warfare?</h4>
+                <form id="question5Form"></form>
+            </div>
+
+            <div id="question6"> 
+                <h3>Question 6</h3>
+                <h4>What is the largest island in the world?</h4>
+                <form id="question6Form"></form>
+            </div>
 
         </div>
-        <div id="answers"> 
-        </div>
         <div id="results"></div>
+        <div id="successMessage" style="display: none; color: green;">Success! Information entered correctly.</div>
         <div id="button_cont">
-        <button id="submitQuizButton">Submit Quiz</button>
+            <button id="submitQuizButton">Submit Quiz</button>
         </div>
+        <div id="correctResults">
+            <button id="correctResultsButton">Show Correct Answers</button>
+        </div>
+        <div id="answers"> </div>
 
     </div>
 
