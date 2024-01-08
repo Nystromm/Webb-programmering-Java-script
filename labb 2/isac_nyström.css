@@ -163,3 +163,33 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+.newQuestionButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#addQuestionButton {
+    
+    width: 150px;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#addQuestionButton :hover{
+    background-color: #0056b3;
+}
+
+#newQuestion {
+    display: flex;
+    align-items: center;
+}

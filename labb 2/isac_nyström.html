@@ -90,9 +90,23 @@
             <button id="correctResultsButton">Show Correct Answers</button>
         </div>
         <div id="answers"> </div>
+        
+        <div class="newQuestionButton">
+            <button id="addQuestionButton">Add a New Question</button>
+        </div>
+
+        <div id="newQuestion" style="display: none;">
+            <label for="newQuestion">Question:</label>
+            <input type="text" id="newQuestion" required>
+            <label for="newOptions">Options (comma-separated):</label>
+            <input type="text" id="newOptions" required>
+            <button id="submitNewQuestion">Add Question</button>
+        </div>
+    
 
     </div>
 
+   
 <script src="isac_nyström.js"></script>
 </body>
 </html>

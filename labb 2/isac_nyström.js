@@ -58,7 +58,8 @@ document.getElementById("visit_info").addEventListener('submit', function (event
     document.getElementById("quizContainer").style.display = "block";
 });
 
-
+//////////////////////////////////////////////////////////////
+// start of quiz code
 function checkAnswers() {
     const answerQuestion1 = document.querySelector('input[name="question1"]:checked');
     const answerQuestion2 = document.querySelector('input[name="question2"]:checked');
@@ -223,3 +224,55 @@ document.getElementById("correctResultsButton").addEventListener('click', functi
 
 });
 
+
+//////////////////////////////////////////////////////////////////////
+// add question to the quiz
+
+document.getElementById("addQuestionButton").addEventListener('click', function () {
+    // Hide the start quiz button
+    document.getElementById("submitNewQuestion").style.display = "block";
+    
+    // Show the quiz container
+    document.getElementById("quizContainer").style.display = "block";
+
+    // Show the add question form
+    document.getElementById("newQuestion").style.display = "block";
+});
+
+// Add event listener for the button to add a new question
+document.getElementById("addQuestionButton").addEventListener('click', function () {
+    addNewQuestion();
+});
+
+// Function to add a new question
+function addNewQuestion() {
+    // Get values from the form
+    const newQuestionInput = document.getElementById("newQuestion");
+    const newOptionsInput = document.getElementById("newOptions");
+
+    const newQuestion = newQuestionInput.value.trim();
+    const newOptions = newOptionsInput.value.split(',').map(option => option.trim());
+
+    // Validate input
+    if (!newQuestion || newOptions.length < 2) {
+        alert("Please provide a question and at least two options.");
+        return;
+    }
+
+    // Create the new question element
+    const newQuestionElement = document.createElement("div");
+    newQuestionElement.innerHTML = `
+        <div>
+            <h3>${newQuestion}</h3>
+            ${newOptions.map(option => `<label><input type="radio" name="${newQuestion}" value="${option}">${option}</label>`).join('')}
+        </div>
+    `;
+
+    // Append the new question to the quiz container
+    const questionsContainer = document.getElementById("questionsContainer");
+    questionsContainer.appendChild(newQuestionElement);
+
+    // Clear the form inputs
+    newQuestionInput.value = '';
+    newOptionsInput.value = '';
+}
