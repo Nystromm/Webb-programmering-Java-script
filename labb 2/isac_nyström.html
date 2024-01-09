@@ -90,30 +90,19 @@
             <button id="correctResultsButton">Show Correct Answers</button>
         </div>
         <div id="answers"> </div>
-        
-        <div class="newQuestionContainer">
-            <div class="newQuestionButton">
-                <label for="questionTypeSelect">Select Question Type:</label>
-                <select id="questionTypeSelect" onchange="selectQuestionTypeOptions(this.value)">
-                    <option value="" selected disabled>Select Question Type</option>
-                    <option value="button">Button</option>
-                    <option value="checkbox">Checkbox</option>
-                    <option value="text">Text</option>
-                </select>
-            </div>
-        
-            <button id="addQuestionButton" onclick="toggleDropdown()">Add a New Question</button>
-        </div>
 
-        <div id="newQuestionForm" style="display: none;">
-            <label for="newQuestion">Question:</label>
-            <input type="text" id="newQuestion" required>
-            <label for="newOptions">Options (comma-separated):</label>
-            <input type="text" id="newOptions" required>
-            <button id="submitNewQuestion">Add Question</button>
-        </div>
     
 
+        <div class="newQuestionButtons">
+            <button id="addQuestionButton" onclick="addNewQuestion('button')">Add a New Question with Button</button>
+            <button id="addQuestionCheckbox" onclick="addNewQuestion('checkbox')">Add a New Question with Checkboxes</button>
+            <button id="addQuestionText" onclick="addNewQuestion('text')">Add a New Question with Text</button>
+
+        </div>
+        <div id="selectedAlternative"></div>
+
+        
+    
     </div>
 
    

@@ -228,61 +228,36 @@ document.getElementById("correctResultsButton").addEventListener('click', functi
 //////////////////////////////////////////////////////////////////////
 // Script to add question to the quiz starts here
 
-document.getElementById("addQuestionButton").addEventListener('click', function () {
-    // Show the add question form
-    document.getElementById("newQuestionForm").style.display = "block";
-});
+function addNewQuestion(type) {
+    // Get the container where you want to add the new questions
+    var questionsContainer = document.getElementById('selectedAlternative');
 
-//button to add a new question
-//document.getElementById("addQuestionButton").addEventListener('click', function () {
-  //  addNewQuestion();
-//});
+    // Create a new question element based on the chosen type
+    var newQuestion = document.createElement('div');
+    newQuestion.className = 'question';
+    if (type === 'button') {
+        // Question with button as an answer
+        newQuestion.innerHTML = 'Question with Button: <input class="question-input" type="text" placeholder="Enter your question">';
+        
+        // Dynamically generate input fields for options
+        for (let i = 1; i <= 3; i++) {
+            newQuestion.innerHTML += `<input type="text" class="option-input" placeholder="Option ${i}"> `;
+        }
 
-// Function to add a new question
-function addNewQuestion() {
-    // Get values from the form
-    const newQuestionInput = document.getElementById("newQuestion");
-    const newOptionsInput = document.getElementById("newOptions");
-
-    const newQuestion = newQuestionInput.value.trim();
-    const newOptions = newOptionsInput.value.split(',').map(option => option.trim());
-
-    // Validate input
-    //if (!newQuestion || newOptions.length < 2) {
-      //  alert("Please provide a question and at least two options.");
-       // return;
-    //}
-
-    // Create the new question element
-    const newQuestionElement = document.createElement("div");
-    newQuestionElement.innerHTML = `
-        <div>
-            <h3>${newQuestion}</h3>
-            ${newOptions.map(option => `<label><input type="radio" name="${newQuestion}" value="${option}">${option}</label>`).join('')}
-        </div>
-    `;
-
-    // Append the new question to the quiz container
-    const questionsContainer = document.getElementById("questionsContainer");
-    questionsContainer.appendChild(newQuestionElement);
-
-    // Clear the form inputs
-    newQuestionInput.value = '';
-    newOptionsInput.value = '';
-}
-
-// Update the function to select question type
-function selectQuestionTypeOptions(questionType) {
-    console.log(`Selected Question Type: ${questionType}`);
-    // You can add additional logic based on the selected question type
-    // For example, you can dynamically update the form based on the selected type
-
-    // Show the newQuestionForm when a question type is selected
-    document.getElementById('newQuestionForm').style.display = 'block';
-}
-
-// Update the function to toggle the dropdown
-function toggleDropdown() {
-    const dropdownContent = document.getElementById('newQuestionForm');
-    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+        // Input field for the correct option
+        newQuestion.innerHTML += '<br>Correct Option: <input class="question-input" type="text" placeholder="Enter the correct option">';
+    } else if (type === 'checkbox') {
+        // Question with multiple checkboxes
+        newQuestion.innerHTML = 'Question with Checkboxes: <input class="question-input" type="text" placeholder="Enter your question">';
+        for (let i = 1; i <= 4; i++) {
+            newQuestion.innerHTML += `<input type="checkbox" id="checkbox${i}"> <input type="text" class="option-input" placeholder="Option ${i}"> `;
+        }
+        newQuestion.innerHTML += '<br>Correct Option: <input class="question-input" type="text" placeholder="Enter the correct option">';
+    } else if (type === 'text') {
+        // Question with text input
+        newQuestion.innerHTML = 'Question with Text: <input class="question-input" type="text" placeholder="Enter your question"> ';
+        newQuestion.innerHTML += '<br>Correct Answer: <input class="question-input" type="text" placeholder="Enter the correct answer">';
+    }
+    // Append the new question to the container
+    questionsContainer.appendChild(newQuestion);
 }
