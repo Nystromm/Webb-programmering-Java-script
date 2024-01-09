@@ -226,23 +226,17 @@ document.getElementById("correctResultsButton").addEventListener('click', functi
 
 
 //////////////////////////////////////////////////////////////////////
-// add question to the quiz
+// Script to add question to the quiz starts here
 
 document.getElementById("addQuestionButton").addEventListener('click', function () {
-    // Hide the start quiz button
-    document.getElementById("submitNewQuestion").style.display = "block";
-    
-    // Show the quiz container
-    document.getElementById("quizContainer").style.display = "block";
-
     // Show the add question form
-    document.getElementById("newQuestion").style.display = "block";
+    document.getElementById("newQuestionForm").style.display = "block";
 });
 
-// Add event listener for the button to add a new question
-document.getElementById("addQuestionButton").addEventListener('click', function () {
-    addNewQuestion();
-});
+//button to add a new question
+//document.getElementById("addQuestionButton").addEventListener('click', function () {
+  //  addNewQuestion();
+//});
 
 // Function to add a new question
 function addNewQuestion() {
@@ -254,10 +248,10 @@ function addNewQuestion() {
     const newOptions = newOptionsInput.value.split(',').map(option => option.trim());
 
     // Validate input
-    if (!newQuestion || newOptions.length < 2) {
-        alert("Please provide a question and at least two options.");
-        return;
-    }
+    //if (!newQuestion || newOptions.length < 2) {
+      //  alert("Please provide a question and at least two options.");
+       // return;
+    //}
 
     // Create the new question element
     const newQuestionElement = document.createElement("div");
@@ -275,4 +269,20 @@ function addNewQuestion() {
     // Clear the form inputs
     newQuestionInput.value = '';
     newOptionsInput.value = '';
+}
+
+// Update the function to select question type
+function selectQuestionTypeOptions(questionType) {
+    console.log(`Selected Question Type: ${questionType}`);
+    // You can add additional logic based on the selected question type
+    // For example, you can dynamically update the form based on the selected type
+
+    // Show the newQuestionForm when a question type is selected
+    document.getElementById('newQuestionForm').style.display = 'block';
+}
+
+// Update the function to toggle the dropdown
+function toggleDropdown() {
+    const dropdownContent = document.getElementById('newQuestionForm');
+    dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
 }

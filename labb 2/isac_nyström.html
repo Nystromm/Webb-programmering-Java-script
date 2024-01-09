@@ -12,6 +12,7 @@
     </div>
 
     <div class="input_container" id="inputContainer">
+        <h4>Please fill in your information below in to get to the quiz</h4>
         <form id="visit_info">
                 <div id="statusMessage"></div>
                 <label for="firstName">First Name:</label>
@@ -82,7 +83,6 @@
 
         </div>
         <div id="results"></div>
-        <div id="successMessage" style="display: none; color: green;">Success! Information entered correctly.</div>
         <div id="button_cont">
             <button id="submitQuizButton">Submit Quiz</button>
         </div>
@@ -91,11 +91,21 @@
         </div>
         <div id="answers"> </div>
         
-        <div class="newQuestionButton">
-            <button id="addQuestionButton">Add a New Question</button>
+        <div class="newQuestionContainer">
+            <div class="newQuestionButton">
+                <label for="questionTypeSelect">Select Question Type:</label>
+                <select id="questionTypeSelect" onchange="selectQuestionTypeOptions(this.value)">
+                    <option value="" selected disabled>Select Question Type</option>
+                    <option value="button">Button</option>
+                    <option value="checkbox">Checkbox</option>
+                    <option value="text">Text</option>
+                </select>
+            </div>
+        
+            <button id="addQuestionButton" onclick="toggleDropdown()">Add a New Question</button>
         </div>
 
-        <div id="newQuestion" style="display: none;">
+        <div id="newQuestionForm" style="display: none;">
             <label for="newQuestion">Question:</label>
             <input type="text" id="newQuestion" required>
             <label for="newOptions">Options (comma-separated):</label>
