@@ -64,7 +64,8 @@ body {
 #question3,
 #question4,
 #question5,
-#question6{
+#question6,
+#addedQuestion {
     border: 1px solid black;    
     width: 450px;
     padding: 20px;
@@ -173,7 +174,9 @@ body {
 
 }
 
-#addQuestionButton {
+#addQuestionButton, 
+#addQuestionCheckbox,
+#addQuestionText {
     width: 150px;
     padding: 10px;
     background-color: #007BFF;
@@ -186,15 +189,15 @@ body {
     display: flex;
 }
 
-#addQuestionButton :hover{
+#addQuestionButton:hover {
     background-color: #0056b3;
 }
 
-#addQuestionCheckbox :hover{
+#addQuestionCheckbox:hover {
     background-color: #0056b3;
 }
 
-#addQuestionText :hover{
+#addQuestionText:hover {
     background-color: #0056b3;
 }
 
@@ -205,6 +208,9 @@ body {
 }
 
 #selectedAlternative {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 20px; 
 }
 

@@ -60,6 +60,7 @@ document.getElementById("visit_info").addEventListener('submit', function (event
 
 //////////////////////////////////////////////////////////////
 // start of quiz code
+
 function checkAnswers() {
     const answerQuestion1 = document.querySelector('input[name="question1"]:checked');
     const answerQuestion2 = document.querySelector('input[name="question2"]:checked');
@@ -229,35 +230,96 @@ document.getElementById("correctResultsButton").addEventListener('click', functi
 // Script to add question to the quiz starts here
 
 function addNewQuestion(type) {
+
     // Get the container where you want to add the new questions
     var questionsContainer = document.getElementById('selectedAlternative');
+
+
+    // Clear existing questions
+    questionsContainer.innerHTML = '';
 
     // Create a new question element based on the chosen type
     var newQuestion = document.createElement('div');
     newQuestion.className = 'question';
+
+    // Handle different types of questions
     if (type === 'button') {
         // Question with button as an answer
-        newQuestion.innerHTML = 'Question with Button: <input class="question-input" type="text" placeholder="Enter your question">';
+        newQuestion.innerHTML = 'Question: <input class="question-input" type="text" placeholder="Enter your question"><br>';
         
         // Dynamically generate input fields for options
+        newQuestion.innerHTML += 'Answers:<br>';
         for (let i = 1; i <= 3; i++) {
-            newQuestion.innerHTML += `<input type="text" class="option-input" placeholder="Option ${i}"> `;
+            newQuestion.innerHTML += `<input type="text" class="option-input" placeholder="Option ${i}"><br>`;
         }
 
         // Input field for the correct option
-        newQuestion.innerHTML += '<br>Correct Option: <input class="question-input" type="text" placeholder="Enter the correct option">';
+        newQuestion.innerHTML += 'Correct Answer: <input class="question-input" type="text" placeholder="Enter the correct option">';
     } else if (type === 'checkbox') {
         // Question with multiple checkboxes
-        newQuestion.innerHTML = 'Question with Checkboxes: <input class="question-input" type="text" placeholder="Enter your question">';
+        newQuestion.innerHTML = 'Question: <input class="question-input" type="text" placeholder="Enter your question"><br>';
+        newQuestion.innerHTML += 'Answers:<br>';
         for (let i = 1; i <= 4; i++) {
-            newQuestion.innerHTML += `<input type="checkbox" id="checkbox${i}"> <input type="text" class="option-input" placeholder="Option ${i}"> `;
+            newQuestion.innerHTML += `<input type="checkbox" id="checkbox${i}"> <input type="text" class="option-input" placeholder="Option ${i}"><br>`;
         }
-        newQuestion.innerHTML += '<br>Correct Option: <input class="question-input" type="text" placeholder="Enter the correct option">';
+        newQuestion.innerHTML += 'Correct Answer: <input class="question-input" type="text" placeholder="Enter the correct option">';
     } else if (type === 'text') {
         // Question with text input
-        newQuestion.innerHTML = 'Question with Text: <input class="question-input" type="text" placeholder="Enter your question"> ';
-        newQuestion.innerHTML += '<br>Correct Answer: <input class="question-input" type="text" placeholder="Enter the correct answer">';
+        newQuestion.innerHTML = 'Question: <input class="question-input" type="text" placeholder="Enter your question"><br>';
+        newQuestion.innerHTML += 'Correct Answer: <input class="question-input" type="text" placeholder="Enter the correct answer">';
     }
+
+    //button to push add new question to the top
+  
+    // Create the "Add Question" button
+    var pushButton = document.createElement('button');
+    pushButton.textContent = 'Add Question';
+    pushButton.onclick = function() {
+        // Extract values from the input 
+        var questionText = newQuestion.querySelector('.question-input').value;
+        var answerTexts = Array.from(newQuestion.querySelectorAll('.option-input')).map(input => input.value);
+        var correctAnswer = newQuestion.querySelector('.question-input[type="text"]').value;
+    
+        // makes a new question with the extracted values
+        var createdQuestion = document.createElement('div');
+        createdQuestion.id = 'addedQuestion';
+    
+        // Setting a unique ID for each user question
+        var questionId = 'Question ' + (questionsContainer.children.length+ 6);
+        
+
+
+        // Set up the HTML structure for the user question
+        createdQuestion.innerHTML = `<h3>${questionId}</h3>`;
+        createdQuestion.innerHTML += `<h4>${questionText}</h4>`;
+    
+        // Display the answers
+        createdQuestion.innerHTML += 'Answers:<br>';
+        answerTexts.forEach((answer, index) => {
+            createdQuestion.innerHTML += `Option ${index + 1}: ${answer}<br>`;
+        });
+    
+        // Display the correct answer
+        ////createdQuestion.innerHTML += `Correct Answer: ${correctAnswer}`;
+
+        
+    
+        // Append the new question to the container
+        questionsContainer.appendChild(createdQuestion,questionsContainer.lastChild);
+    
+        // Clear the input fields in the original question
+        newQuestion.querySelector('.question-input').value = '';
+        newQuestion.querySelectorAll('.option-input').forEach(input => input.value = '');
+        newQuestion.querySelector('.question-input[type="text"]').value = '';
+    
+        // Show the userQuestions container
+    };
+
+    // Append the "Add Question" button to the newQuestion element
+    newQuestion.appendChild(pushButton);
+
     // Append the new question to the container
     questionsContainer.appendChild(newQuestion);
-}
+
+};
+
