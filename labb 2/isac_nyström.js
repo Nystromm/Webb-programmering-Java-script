@@ -160,7 +160,8 @@ function createCheckbox(formId, name, id, label) {
     const checkboxContainer = document.createElement("div");
     checkboxContainer.style.display = "flex";
     checkboxContainer.style.alignItems = "center";
-
+    
+    // input element for checkboxes 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.id = id;
@@ -171,11 +172,11 @@ function createCheckbox(formId, name, id, label) {
     checkboxLabel.htmlFor = id;
     checkboxLabel.appendChild(document.createTextNode(label));
 
-    // Append the checkbox and label to the container
+    // Adding the checkbox and label to the container
     checkboxContainer.appendChild(checkbox);
     checkboxContainer.appendChild(checkboxLabel);
 
-    // Append the container to the form
+    // adding the container
     form.appendChild(checkboxContainer);
 }
 
@@ -189,13 +190,15 @@ createCheckbox("question4Form","question4", "Moscovium", "Moscovium");
 createCheckbox("question4Form","question4", "Meitnerium", "Meitnerium");
 createCheckbox("question4Form","question4", "Mercury", "Mercury");
 
+// text question function
 function createTextbox(formId, id, label) {
     const form = document.getElementById(formId);
     
     const textboxLabel = document.createElement("label");
     textboxLabel.htmlFor = id;
     textboxLabel.textContent = label;
-
+    
+    // creating input element for text question
     const textbox = document.createElement("input");
     textbox.type = "text";
     textbox.name = id;
@@ -203,7 +206,8 @@ function createTextbox(formId, id, label) {
     
     form.appendChild(textboxLabel);
     form.appendChild(textbox); 
-
+    
+    // preventing the form to be sumbitted
     textbox.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
@@ -217,7 +221,7 @@ createTextbox("question5Form", "textbox1", "Enter your answer:");
 createTextbox("question6Form", "textbox2", "Enter your answer:");
 
 
-
+// button for displaying the correct answes
 document.getElementById("correctResultsButton").addEventListener('click', function (event) {
     event.preventDefault();
     document.getElementById("answers").innerHTML = `Correct answers: <br><br>Question 1: 39 inches <br>Question 2: Venus
