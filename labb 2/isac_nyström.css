@@ -176,7 +176,9 @@ body {
 
 #addQuestionButton, 
 #addQuestionCheckbox,
-#addQuestionText {
+#addQuestionText,
+#removeStorageButton,
+#retriveStorageButton {
     width: 150px;
     padding: 10px;
     background-color: #007BFF;

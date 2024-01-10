@@ -80,10 +80,10 @@
                 <h4>What is the largest island in the world?</h4>
                 <form id="question6Form"></form>
             </div>
-            
-            <div id="selectedAlternative"></div>
+            <div id="userInput"></div>
 
-        
+
+    
 
         </div>
 
@@ -102,9 +102,13 @@
             <button class="questionTypeButton" id="addQuestionButton" onclick="addNewQuestion('button')">Add a New Question with Button</button>
             <button class="questionTypeCheckbox" id="addQuestionCheckbox" onclick="addNewQuestion('checkbox')">Add a New Question with Checkboxes</button>
             <button class="questionTypeText" id="addQuestionText" onclick="addNewQuestion('text')">Add a New Question with Text</button>
+            <button class="removeStorage" id="removeStorageButton" onclick=" removeStoredData()">Remove Question from storage</button>
+            <button class="retriveStorage" id="retriveStorageButton" onclick="retrieveQuizFromLocalStorage()"> Retrieve added questions</button>
         </div>
 
         </div>
+        <div id="selectedAlternative"></div>
+
 
 
         
